@@ -12,14 +12,18 @@
 /*
 TODO:
 colour support
-directory listing wihtout wildcards
+directory listing without wildcards
 sorting
+
+fix attribute formatting in list.c
+
 */
 
 void help(char **argv) {
-	printf("usage: %s [options...] files...\n", argv[0]);
+	printf("usage: %s [-aAlh] dir...\n", argv[0]);
+	printf("list files in a directory\n");
 	printf("  -a\tdo not skip hidden files\n");
-	printf("  -A\tdo not skip everything except . and ..\n");
+	printf("  -A\tdo not skip anything except . and ..\n");
 	printf("  -l\tlong (detailed format)\n");
 	printf("  -h\tprint help message\n");
 	return;

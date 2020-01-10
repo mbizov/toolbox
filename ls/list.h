@@ -20,7 +20,7 @@ typedef struct _list_opts {
 } list_opts_t;
 
 /* formats the attributes in a line format like ls -l */
-char *FormatAttributes(DWORD dwFileAttributes);
+void FormatAttributes(DWORD dwFileAttributes);
 
 /* dump information about a file according to the settings structure */
 int DumpFileInfo(WIN32_FIND_DATA fd, list_opts_t *lo);

@@ -1,7 +1,7 @@
 #include "list.h"
 
-char *FormatAttributes(DWORD dwFileAttributes) {
-	char formatted[12];
+void FormatAttributes(DWORD dwFileAttributes) {
+	/*char formatted[12];
 	if (dwFileAttributes & FILE_ATTRIBUTE_ARCHIVE) strcat(formatted, "a");
 	else strcat(formatted, "-");
 	
@@ -17,13 +17,30 @@ char *FormatAttributes(DWORD dwFileAttributes) {
 	if (dwFileAttributes & FILE_ATTRIBUTE_HIDDEN) strcat(formatted, "h");
 	else strcat(formatted, "-");
 	
-	fi (dwFileAttributes & FILE_ATTRIBUTE_NORMAL) strcat(formatted, "n");
+	if (dwFileAttributes & FILE_ATTRIBUTE_NORMAL) strcat(formatted, "n");
 	else strcat(formatted, "-");
+	
+	if (dwFileAttributes)*/
+	
+	//char *formatted = (char*)malloc(1);
+	
+	if (dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) printf("d");
+	
+	if (dwFileAttributes & FILE_ATTRIBUTE_READONLY) printf("r");
+	else printf("rw");
+	
+	
+	//return formatted;
 }
 
 int DumpFileInfo(WIN32_FIND_DATA fd, list_opts_t *lo) {
 	if (!lo->detailed_list) {
 		printf("%s\n", fd.cFileName);
+	}
+	
+	if (lo->detailed_list) {
+		FormatAttributes(0);
+		printf(" %s\n", fd.cFileName);
 	}
 	
 	return ERROR_NONE;
